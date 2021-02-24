@@ -1,1 +1,15 @@
 <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<hr>
+
+<% @user.invitations.each do |invitation| %>
+  <p>
+    <strong>Event to attend:</strong>
+    <%= invitation.attended_event.name %>
+  </p>
+<% end %>
