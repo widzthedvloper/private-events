@@ -2,7 +2,10 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show]
 
   # GET /users/1 or /users/1.json
-  def show; end
+  def show
+    @future = @user.events.future_events
+    @past = @user.events.past_events
+  end
 
   # GET /users/new
   def new
@@ -34,7 +37,6 @@ class UsersController < ApplicationController
     @user = User.find_by(user_params)
     if @user
       session[:user_id] = @user.id
-      p session
     else
       @user = User.new(user_params)
       flash.alert = 'Incorrect email'
