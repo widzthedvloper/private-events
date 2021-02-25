@@ -6,27 +6,28 @@
 </p>
 
 <hr>
-
-<strong>Future events</strong><br>
-  <% @future.each do |event| %>
-    <p>
-      <strong>Scheduled:</strong>
-      <%= event.date %>,
-      <strong>Name:</strong>
-      <%= event.name %>
-    </p>
-  <% end %>
-
-<strong>Past events</strong><br>
-  <% @past.each do |event| %>
-    <p>
-      <strong>Due:</strong>
-      <%= event.date %>,
-      <strong>Name:</strong>
-      <%= event.name %>
-    </p>
-  <% end %>
-
+<div class="d-flex col-6">
+  <strong>Future events</strong><br>
+    <% @future.each do |event| %>
+      <p>
+        <strong>Scheduled:</strong>
+        <%= event.date %>,
+        <strong>Name:</strong>
+        <%= event.name %>
+      </p>
+    <% end %>
+</div>
+<div class="d-flex col-6">
+  <strong>Past events</strong><br>
+    <% @past.each do |event| %>
+      <p>
+        <strong>Due:</strong>
+        <%= event.date %>,
+        <strong>Name:</strong>
+        <%= event.name %>
+      </p>
+    <% end %>
+</div>
 <hr>
 
 <% @user.invitations.each do |invitation| %>

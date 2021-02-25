@@ -2,7 +2,7 @@
 
 <h1>Events</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -20,12 +20,12 @@
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
-        <td><%= event.creator %></td>
+        <td><%= event.user.email %></td>
         <td><%= link_to 'Show', event %></td>
       </tr>
     <% end %>
   </tbody>
-    <table>
+  <table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -42,7 +42,7 @@
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.date %></td>
-        <td><%= event.creator %></td>
+        <td><%= event.user.email %></td>
         <td><%= link_to 'Show', event %></td>
       </tr>
     <% end %>
