@@ -2,7 +2,7 @@
 This project is a Private Events app. The idea is to create an app where the members of the website can publish events, attend events and invite other users.
 
 ## App Home Page
-![](app/assets/images/screenshot.png)
+![](app/assets/images/private_app_screenshot.png)
 
 ## Getting Started :
 - Clone the repository: `git clone https://github.com/widzthedvloper/private-events`
