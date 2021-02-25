@@ -33,6 +33,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  # DELETE /users
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+
   # POST /login
   def signin
     @user = User.find_by(user_params)

@@ -15,7 +15,9 @@
 
   <body>
     <%= render "shared/nav" %>
-    <%= alert %>
-    <%= yield %>
+    <div class="container">
+      <%= render 'shared/alert' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
