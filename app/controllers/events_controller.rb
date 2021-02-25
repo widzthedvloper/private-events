@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show]
+  before_action :authenticate, only: %i[new create]
 
   # GET /events or /events.json
   def index
@@ -40,5 +41,11 @@ class EventsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:name, :description, :date)
+  end
+
+  # Only allow signed-in users to create posts
+  def authenticate
+    session[:redirect_me] = request.env['PATH_INFO']
+    redirect_to login_path unless signed_in?
   end
 end

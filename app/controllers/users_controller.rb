@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show]
+  before_action :authenticate, only: %i[show]
 
   # GET /users/1 or /users/1.json
   def show
@@ -35,11 +36,16 @@ class UsersController < ApplicationController
   # POST /login
   def signin
     @user = User.find_by(user_params)
-    if @user
+    if @user and !signed_in?
       session[:user_id] = @user.id
+      if session[:redirect_me]
+        redirect_to session[:redirect_me]
+      else
+        redirect_to '/'
+      end
     else
       @user = User.new(user_params)
-      flash.alert = 'Incorrect email'
+      flash.alert = 'This email was '
       render :login
     end
   end
@@ -54,5 +60,11 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:email)
+  end
+
+  # Only allow signed-in users to create posts
+  def authenticate
+    session[:redirect_me] = request.env['PATH_INFO']
+    redirect_to :login unless signed_in?
   end
 end
