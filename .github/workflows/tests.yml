@@ -17,6 +17,6 @@ jobs:
       - name:           Setup RSpec
         run:            |
           bundle update --bundler
-          bundle add rspec-rails
+          bundle add rspec-rails || bundle install
       - name:           RSpec Report
         run:            bundle exec rspec --force-color --format documentation
