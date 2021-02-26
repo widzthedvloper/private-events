@@ -18,4 +18,8 @@ RSpec.describe Event, type: :model do
       expect(event).to_not be_valid
     end
   end
+
+  describe "Associations" do
+    it { should belong_to(:user).without_validating_presence }
+  end 
 end

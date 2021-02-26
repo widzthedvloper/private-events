@@ -8,4 +8,12 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
   end
+
+  describe "Associations" do
+    it { should have_many(:events).without_validating_presence }
+
+    it { should have_many(:invitations).without_validating_presence }
+
+    it { should have_many(:attended_event).without_validating_presence }
+  end
 end
