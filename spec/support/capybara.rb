@@ -1,5 +1,6 @@
 require 'capybara/rspec'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
@@ -44,4 +45,14 @@ RSpec.configure do |config|
   config.append_after(:each) do
     DatabaseCleaner.clean
   end
+
+  # Change the default driver to Selenium Headless
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_headless
+  end
+  # rubocop:enable Metrics/BlockLength
 end
