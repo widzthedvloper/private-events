@@ -15,6 +15,9 @@ jobs:
         with:
           ruby-version: ">=2.7.x"
       - name:           Setup RSpec
-        run:            gem install --no-document rspec
+        run:            |
+          [ -f Gemfile ] && bundle update --bundler
+          [ -f Gemfile ] && bundle add rspec
+          [ -f Gemfile ] && bundle install
       - name:           RSpec Report
-        run:            rspec --force-color --format documentation
+        run:            bundle exec rspec --force-color --format documentation

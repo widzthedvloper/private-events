@@ -16,10 +16,12 @@ jobs:
           ruby-version: ">=2.7.x"
       - name:           Setup Rubocop
         run:            |
-          gem install --no-document rubocop # https://docs.rubocop.org/en/stable
-          [ -f .rubocop.yml ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ror/.rubocop.yml
+          [ -f Gemfile ] && bundle update --bundler
+          [ -f Gemfile ] && bundle add rubocop
+          [ -f Gemfile ] && bundle install
+          [ -f .rubocop.yml ] || wget https://raw.githubusercontent.com/microverseinc/linters-config/master/ruby/.rubocop.yml
       - name:           Rubocop Report
-        run:            rubocop --color
+        run:            bundle exec rubocop --color
   stylelint:
     name:               StyleLint
     runs-on:            ubuntu-latest
