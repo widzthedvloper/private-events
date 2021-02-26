@@ -41,10 +41,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:name, :description, :date)
   end
-
-  # Only allow signed-in users to create posts
-  def authenticate
-    session[:redirect_me] = request.env['PATH_INFO']
-    redirect_to login_path unless signed_in?
-  end
 end

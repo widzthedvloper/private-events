@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
   def signed_in?
     session[:user_id]
   end
+
+  def authenticate
+    return if signed_in?
+
+    session[:redirect_me] = request.env['PATH_INFO']
+    flash.alert = 'You are not authorized to perform this action.'
+    redirect_to login_path
+  end
 end

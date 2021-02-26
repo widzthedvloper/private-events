@@ -36,22 +36,23 @@ class UsersController < ApplicationController
   # DELETE /users
   def logout
     session[:user_id] = nil
+    flash.notice = 'You are now signed out!'
     redirect_to root_path
   end
 
   # POST /login
   def signin
     @user = User.find_by(user_params)
-    if @user and !signed_in?
+    if @user
       session[:user_id] = @user.id
       if session[:redirect_me]
         redirect_to session[:redirect_me]
       else
-        redirect_to '/'
+        redirect_to root_path
       end
     else
       @user = User.new(user_params)
-      flash.alert = 'This email was '
+      flash.now.alert = 'Invalid login credentials'
       render :login
     end
   end
@@ -66,11 +67,5 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:email)
-  end
-
-  # Only allow signed-in users to create posts
-  def authenticate
-    session[:redirect_me] = request.env['PATH_INFO']
-    redirect_to :login unless signed_in?
   end
 end

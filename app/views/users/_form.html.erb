@@ -1,15 +1,6 @@
 <%= form_with model: user, url: new_action do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+  <%= render 'shared/form_errors', my_model: user, my_name: "user" %>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div>
     <%= form.label :email %>
     <%= form.email_field :email, class: "form-control"%>
