@@ -13,4 +13,9 @@ RSpec.describe Invitation, type: :model do
       expect(invitation).to_not be_valid
     end
   end
+
+  describe 'associations' do
+    it { should belong_to(:atendee).without_validating_presence }
+    it { should belong_to(:attended_event).without_validating_presence }
+  end
 end

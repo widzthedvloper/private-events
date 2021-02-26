@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "Associations" do
+  describe 'associations' do
     it { should have_many(:events).without_validating_presence }
 
     it { should have_many(:invitations).without_validating_presence }

@@ -53,8 +53,8 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   gem 'rexml', '~> 3.2', '>= 3.2.4'
-  gem 'webdrivers'
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

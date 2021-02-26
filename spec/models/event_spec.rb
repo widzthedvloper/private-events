@@ -19,7 +19,9 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "Associations" do
+  describe 'associations' do
     it { should belong_to(:user).without_validating_presence }
-  end 
+    it { should have_many(:invitations).without_validating_presence }
+    it { should have_many(:atendee).without_validating_presence }
+  end
 end
