@@ -1,0 +1,22 @@
+<%= form_with(model: event) do |form| %>
+  <%= render 'shared/form_errors', my_model: event, my_name: "event" %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="field my-2">
+    <%= form.label :date %>
+    <%= form.date_select :date, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

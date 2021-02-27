@@ -1,0 +1,11 @@
+<%= form_with model: user, url: new_action do |form| %>
+  <%= render 'shared/form_errors', my_model: user, my_name: "user" %>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "form-control"%>
+  </div>
+  <div class="actions my-2">
+    <%= form.submit button_name,  class: "btn btn-primary" %>
+  </div>
+<% end %>

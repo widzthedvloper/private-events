@@ -1,0 +1,30 @@
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @event.date %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @event.user.email %>
+</p>
+
+<hr>
+
+<% @event.invitations.each do |invitation| %>
+  <p>
+    <strong>Attendee:</strong>
+    <%= invitation.atendee.email %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', events_path %>
